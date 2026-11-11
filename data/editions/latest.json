@@ -1,0 +1,45 @@
+{
+  "date": "2026-11-10",
+  "generated_at": "2026-11-10T05:42:00Z",
+  "prompt_version": "v1",
+  "is_sample": true,
+  "stories": [
+    {
+      "id": "st_sample_0001",
+      "company": "Nvidia",
+      "category": "product_launch",
+      "rank": 1,
+      "headline": "Sample: Nvidia opens a marketplace for renting GPU time",
+      "what": "Sample story used to test the page layout; not real news.",
+      "why": {
+        "exec": "Sample executive angle.",
+        "marketing": "Sample marketing angle.",
+        "product": "Sample product angle.",
+        "tech": "Sample tech angle."
+      },
+      "sources": [
+        { "name": "Nvidia Newsroom", "url": "https://nvidianews.nvidia.com/", "official": true },
+        { "name": "Reuters", "url": "https://www.reuters.com/technology/", "official": false }
+      ],
+      "is_update": false
+    },
+    {
+      "id": "st_sample_0002",
+      "company": "Duolingo",
+      "category": "product_launch",
+      "rank": 2,
+      "headline": "Sample: Duolingo adds AI role-play calls",
+      "what": "Second sample story used to test the page layout; not real news.",
+      "why": {
+        "exec": "Sample executive angle.",
+        "marketing": "Sample marketing angle.",
+        "product": "Sample product angle.",
+        "tech": "Sample tech angle."
+      },
+      "sources": [
+        { "name": "Duolingo Blog", "url": "https://blog.duolingo.com/", "official": true }
+      ],
+      "is_update": false
+    }
+  ]
+}
