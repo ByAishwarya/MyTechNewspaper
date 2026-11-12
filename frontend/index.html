@@ -4,38 +4,49 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>My Tech Newspaper</title>
-  <style>
-    body { font-family: system-ui, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 16px; }
-    .ok { color: #0f7b6c; } .err { color: #b3261e; }
-    li { margin-bottom: 6px; }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>My Tech Newspaper</h1>
-  <p id="status">Loading edition…</p>
-  <ul id="list"></ul>
+  <div class="app">
 
-  <script>
-    // Step 1 check: can the page load the edition file over http://localhost?
-    // The path goes up one folder because the server runs from the project root.
-    fetch("../data/editions/latest.json")
-      .then(res => {
-        if (!res.ok) throw new Error("HTTP " + res.status);
-        return res.json();
-      })
-      .then(edition => {
-        const status = document.getElementById("status");
-        status.className = "ok";
-        status.textContent = `It works: edition ${edition.date} with ${edition.stories.length} stories (prompt ${edition.prompt_version}).`;
-        document.getElementById("list").innerHTML =
-          edition.stories.map(s => `<li><b>${s.company}</b>: ${s.headline}</li>`).join("");
-      })
-      .catch(err => {
-        const status = document.getElementById("status");
-        status.className = "err";
-        status.textContent = "Could not load the edition: " + err.message +
-          ". Did you open this through the local server (http://localhost), not by double-clicking the file?";
-      });
-  </script>
+    <!-- Left menu on desktop, top tab bar on phones -->
+    <nav class="menu" aria-label="Stories">
+      <div class="brand">My Tech Newspaper<small id="brandDate"></small></div>
+      <div class="tabs" role="tablist">
+        <button class="tab" role="tab" data-view="unread" aria-selected="true">
+          Unread <span class="count" id="countUnread">0</span>
+        </button>
+        <button class="tab" role="tab" data-view="read" aria-selected="false">
+          Read <span class="count" id="countRead">0</span>
+        </button>
+      </div>
+      <button class="reset" id="resetBtn" title="Testing only">Reset read status</button>
+    </nav>
+
+    <main>
+      <header class="topbar">
+        <div class="edition">
+          <b id="edTitle">Loading…</b>
+          <span id="edMeta"></span>
+        </div>
+        <div class="persona" role="group" aria-label="Why it matters for">
+          <span>Why it matters for</span>
+          <button data-p="exec">CEO</button>
+          <button data-p="marketing">Marketing</button>
+          <button data-p="product">Product</button>
+          <button data-p="tech">Tech</button>
+        </div>
+      </header>
+
+      <div id="notice" class="notice" hidden></div>
+      <div id="feed" class="feed"></div>
+    </main>
+  </div>
+
+  <!-- Order matters: read-store.js must load before app.js uses it -->
+  <script src="read-store.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
