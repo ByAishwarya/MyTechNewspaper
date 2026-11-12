@@ -51,7 +51,7 @@ function visibleStories() {
 
 // Image credit shown in the bottom-right corner of the picture.
 //   official: "Image: Nvidia"            (links to the company page)
-//   pexels:   "Photo: Jane Doe / Pexels" (links to photographer and Pexels)
+//   pixabay:  "Photo: Jane Doe / Pixabay" (links to photographer and Pixabay)
 function creditHtml(img) {
   const prefix = img.source === "official" ? "Image:" : "Photo:";
   const who = img.credit_url
@@ -119,10 +119,18 @@ function render() {
       ? `<p class="empty">You're all caught up: you've read all ${total} stories today.</p>`
       : `<p class="empty">Nothing read yet. Scroll through the Unread page and stories appear here.</p>`;
   } else {
-    // Pexels asks for a visible link to Pexels whenever their photos are shown.
-    const usesPexels = stories.some((s) => s.image && s.image.source === "pexels");
-    $("#feed").innerHTML = stories.map(cardHtml).join("") +
-      (usesPexels ? `<p class="foot">Stock photos provided by <a href="https://www.pexels.com" target="_blank" rel="noopener">Pexels</a>.</p>` : "");
+    // Stock photo services ask us to show where the photos come from.
+    const providers = new Map();
+    stories.forEach((s) => {
+      if (s.image && s.image.source !== "official" && s.image.provider_name) {
+        providers.set(s.image.provider_name, s.image.provider_url);
+      }
+    });
+    const footer = providers.size
+      ? `<p class="foot">Stock photos from ${[...providers].map(([name, url]) =>
+          `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(name)}</a>`).join(" and ")}.</p>`
+      : "";
+    $("#feed").innerHTML = stories.map(cardHtml).join("") + footer;
   }
   watchCards();
 }
