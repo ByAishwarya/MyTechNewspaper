@@ -1,0 +1,38 @@
+{
+  "_comment": "Used in step 5 (rank) as a SMALL BOOST: stories about these companies score a bit higher. NOT a filter: stories about other companies still appear. Reviewed monthly. 'aliases' help step 4 recognise the company in article text.",
+  "groups": {
+    "global_leaders": [
+      { "name": "Nvidia" },
+      { "name": "Microsoft" },
+      { "name": "Apple" },
+      { "name": "Alphabet/Google", "aliases": ["Google", "Alphabet", "YouTube", "Gemini"] },
+      { "name": "Amazon/AWS", "aliases": ["Amazon", "AWS", "Amazon Web Services"] },
+      { "name": "Meta", "aliases": ["Meta Platforms", "Facebook"] },
+      { "name": "TSMC" },
+      { "name": "Broadcom" },
+      { "name": "Tesla" },
+      { "name": "Oracle" }
+    ],
+    "ai_labs": [
+      { "name": "OpenAI", "aliases": ["ChatGPT"] },
+      { "name": "Anthropic", "aliases": ["Claude"] },
+      { "name": "Google DeepMind", "aliases": ["DeepMind"] },
+      { "name": "Mistral AI", "aliases": ["Mistral"] }
+    ],
+    "european_leaders": [
+      { "name": "ASML" }, { "name": "SAP" }, { "name": "Spotify" }, { "name": "Arm" }
+    ],
+    "european_startups": [
+      { "name": "Revolut" }, { "name": "ElevenLabs" }, { "name": "Helsing" },
+      { "name": "Lovable" }, { "name": "Nscale" }
+    ],
+    "berlin_startups": [
+      { "name": "n8n" }, { "name": "Parloa" }, { "name": "Langdock" }, { "name": "N26" },
+      { "name": "GetYourGuide" }, { "name": "Enpal" }
+    ],
+    "consumer_apps": [
+      { "name": "Instagram" }, { "name": "WhatsApp" }, { "name": "TikTok" },
+      { "name": "Duolingo" }, { "name": "Netflix" }
+    ]
+  }
+}

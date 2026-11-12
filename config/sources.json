@@ -1,0 +1,45 @@
+{
+  "_comment": "Sources for scripts/step1_collect.py. Edit this file to add or remove sources; no code change needed (configuration as data). Topic-based since 12 Nov 2026: the company watchlist is a RANKING BOOST (config/watchlist.json, step 5), not a collection filter.",
+  "max_age_hours": 48,
+
+  "official_feeds": [
+    { "name": "Nvidia Newsroom",          "company": "Nvidia",          "url": "https://nvidianews.nvidia.com/releases.xml" },
+    { "name": "OpenAI News",              "company": "OpenAI",          "url": "https://openai.com/news/rss.xml" },
+    { "name": "Microsoft Official Blog",  "company": "Microsoft",       "url": "https://blogs.microsoft.com/feed/" },
+    { "name": "Google The Keyword",       "company": "Alphabet/Google", "url": "https://blog.google/rss/" },
+    { "name": "AWS News Blog",            "company": "Amazon/AWS",      "url": "https://aws.amazon.com/blogs/aws/feed/" },
+    { "name": "Apple Newsroom",           "company": "Apple",           "url": "https://www.apple.com/newsroom/rss-feed.rss" },
+    { "name": "n8n Blog",                 "company": "n8n",             "url": "https://blog.n8n.io/rss/" }
+  ],
+
+  "_topic_feeds_comment": "Tech/AI/startup news sites. Not yet verified: the source report shows which ones work.",
+  "topic_feeds": [
+    { "name": "TechCrunch AI",        "url": "https://techcrunch.com/category/artificial-intelligence/feed/" },
+    { "name": "TechCrunch Startups",  "url": "https://techcrunch.com/category/startups/feed/" },
+    { "name": "TechCrunch Venture",   "url": "https://techcrunch.com/category/venture/feed/" },
+    { "name": "VentureBeat AI",       "url": "https://venturebeat.com/category/ai/feed/" },
+    { "name": "The Verge AI",         "url": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml" },
+    { "name": "Tech.eu",              "url": "https://tech.eu/feed/" },
+    { "name": "Hacker News (100+ points)", "url": "https://hnrss.org/frontpage?points=100" }
+  ],
+
+  "google_news": {
+    "window": "1d",
+    "hl": "en-US",
+    "gl": "US",
+    "ceid": "US:en",
+    "queries": [
+      { "label": "AI product launches",   "query": "launches AI feature OR \"AI-powered\" launch" },
+      { "label": "AI in companies",       "query": "\"generative AI\" enterprise deployment OR \"uses AI to\"" },
+      { "label": "New AI models",         "query": "new AI model release" },
+      { "label": "Tech product launches", "query": "launches new feature app OR software" },
+      { "label": "Case studies",          "query": "\"case study\" AI customers results" },
+      { "label": "Startup funding",       "query": "startup raises \"Series A\" OR \"Series B\" OR \"seed round\"" },
+      { "label": "AI startup funding",    "query": "AI startup raises million funding" },
+      { "label": "European startups",     "query": "European startup raises funding" }
+    ]
+  },
+
+  "_producthunt_comment": "Official GraphQL API v2 with a free developer token (PRODUCTHUNT_TOKEN in .env). API terms: not for commercial use without asking Product Hunt; a student project is non-commercial.",
+  "producthunt": { "enabled": true, "top_n": 5 }
+}
