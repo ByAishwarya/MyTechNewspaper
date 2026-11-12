@@ -48,20 +48,40 @@ function visibleStories() {
 }
 
 // ---------- Rendering ----------
+
+// Image credit shown in the bottom-right corner of the picture.
+//   official: "Image: Nvidia"            (links to the company page)
+//   pexels:   "Photo: Jane Doe / Pexels" (links to photographer and Pexels)
+function creditHtml(img) {
+  const prefix = img.source === "official" ? "Image:" : "Photo:";
+  const who = img.credit_url
+    ? `<a href="${esc(img.credit_url)}" target="_blank" rel="noopener">${esc(img.credit_name)}</a>`
+    : esc(img.credit_name);
+  const provider = img.provider_name
+    ? ` / <a href="${esc(img.provider_url)}" target="_blank" rel="noopener">${esc(img.provider_name)}</a>`
+    : "";
+  return `${prefix} ${who}${provider}`;
+}
+
 function cardHtml(s) {
   const [c1, c2] = CATEGORY_COLORS[s.category] || CATEGORY_COLORS.other;
   const primary = s.sources.find((x) => x.official) || s.sources[0];
   const others = s.sources.length - 1;
   const open = state.openSources.has(s.id);
   const isRead = state.readIds.has(s.id);
+  const img = s.image && s.image.url ? s.image : null;
 
+  // If the image fails to load (deleted, moved, blocked), onerror removes it
+  // and the coloured tile underneath shows instead: no broken-image icon.
   return `
   <article class="story ${isRead ? "is-read" : ""}" data-id="${esc(s.id)}">
-    <div class="visual" style="background: linear-gradient(140deg, ${c1}, ${c2})">
-      ${s.image_url ? `<img src="${esc(s.image_url)}" alt="">` : ""}
+    <div class="visual ${img ? "has-img" : ""}" style="background: linear-gradient(140deg, ${c1}, ${c2})">
+      ${img ? `<img src="${esc(img.url)}" alt="" loading="lazy" referrerpolicy="no-referrer"
+                 onerror="this.parentElement.classList.remove('has-img'); this.remove();">` : ""}
       <span class="cat">${esc(CATEGORY_LABELS[s.category] || s.category)}</span>
       <span class="rank">#${s.rank}</span>
       <span class="cname">${esc(s.company)}</span>
+      ${img ? `<span class="credit">${creditHtml(img)}</span>` : ""}
     </div>
     <div class="text">
       <h3>${esc(s.headline)}</h3>
@@ -99,7 +119,10 @@ function render() {
       ? `<p class="empty">You're all caught up: you've read all ${total} stories today.</p>`
       : `<p class="empty">Nothing read yet. Scroll through the Unread page and stories appear here.</p>`;
   } else {
-    $("#feed").innerHTML = stories.map(cardHtml).join("");
+    // Pexels asks for a visible link to Pexels whenever their photos are shown.
+    const usesPexels = stories.some((s) => s.image && s.image.source === "pexels");
+    $("#feed").innerHTML = stories.map(cardHtml).join("") +
+      (usesPexels ? `<p class="foot">Stock photos provided by <a href="https://www.pexels.com" target="_blank" rel="noopener">Pexels</a>.</p>` : "");
   }
   watchCards();
 }
