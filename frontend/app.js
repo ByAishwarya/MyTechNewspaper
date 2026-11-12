@@ -8,9 +8,9 @@
 const EDITION_URL = "../data/editions/latest.json";
 
 // Read-detection rule: a card counts as read when at least 60% of it
-// stays on screen for 2 seconds while the tab is visible.
+// stays on screen for 10 seconds while the tab is visible.
 const READ_VISIBLE_SHARE = 0.6;
-const READ_DWELL_MS = 2000;
+const READ_DWELL_MS = 10000; // milliseconds: 10000 = 10 seconds
 
 const PERSONA_LABELS = { exec: "CEO", marketing: "Marketing", product: "Product", tech: "Tech" };
 const CATEGORY_LABELS = {
