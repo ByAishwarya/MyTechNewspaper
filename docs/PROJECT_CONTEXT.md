@@ -7,11 +7,8 @@
 
 ## 1. Who I am and what I need
 
-- I'm **Aishwarya**, a master's student in Germany (HTW Berlin). This project is for a course that uses **n8n**, with a **written project and an oral exam**.
-- **Grading:** average project = 3.0, really good = 2.0, **1.0 = exceeds all expectations**. I'm aiming for **1.0**. The professor wants it industry-relevant and current (not outdated).
-- **Requirements:** must use **n8n** and **AWS**. The professor requires no specific AWS services.
+- I'm **Aishwarya**, a master's student in Germany (HTW Berlin). This project is for a course that uses **n8n**, with **AWS and Data Science concepts**.
 - I'll work in this field later, so I need to **really understand** every concept, edge case, pro/con and trade-off, not just get working code.
-- Timeline: about **8 weeks** to submission from 10 Nov 2026 (exact exam dates not fixed yet).
 - I'm **good at data science** concepts. I have AWS experience; I'm **new to n8n**.
 
 ## 2. How to work with me (important)
@@ -77,8 +74,8 @@
 The LLM writes each story **once per persona** (stories × 4), not once per user. The website only filters/chooses what to show. **AI cost doesn't grow with the number of readers.**
 
 ### Watchlist (config table, reviewed monthly)
-Global leaders (Nvidia, Microsoft, Apple, Alphabet/Google, Amazon/AWS, Meta, TSMC, Broadcom, Tesla, Oracle), AI labs (OpenAI, Anthropic, Google DeepMind, Mistral AI), European leaders (ASML, SAP, Spotify, Arm), European startups (Revolut, ElevenLabs, Helsing, Lovable, Nscale), Berlin startups (n8n, Parloa, Langdock, N26, GetYourGuide, Enpal), consumer apps (Instagram, WhatsApp, TikTok, Duolingo, Netflix).
-**Postponed idea:** region/ranking filters (US, Europe, South Asia, East Asia, Fortune 500, most valuable, most profitable). For now the menu has only **Unread / Read**.
+Global leaders (Nvidia, Microsoft, Apple, Alphabet/Google, Amazon/AWS, Meta, TSMC, Broadcom, Tesla, Oracle), AI labs (OpenAI, Anthropic, Google DeepMind, Mistral AI), European leaders (ASML, SAP, Spotify, Arm), European startups (Revolut, ElevenLabs, Helsing, Lovable, Nscale and more), Berlin startups (n8n, Parloa, Langdock, N26, GetYourGuide, Enpal and many more), consumer apps (Instagram, WhatsApp, TikTok, Duolingo, Netflix and many more), top fortune 500 companies which are in tech
+For now the menu has only **Unread / Read**. Calender view will be add later.
 
 ## 6. The 4-part plan
 
@@ -226,7 +223,7 @@ Part 3: **Cognito** login → **API Gateway** checks the token → **Lambda** wr
 - **PRD** (product requirements doc, Claude Docs): https://claude.ai/artifact/9rLPMBYvZs2EzQPFsps5yL. Still valid for goals, personas, architecture, evaluation, risks. **Outdated parts:** the menu is now Unread/Read (not companies), images now use Pixabay, the 4-part plan above replaces its milestone phases.
 - **Early clickable prototype:** https://claude.ai/artifact/8buHosWSAYKc54TX1ucgHn (superseded by the real frontend in the repo).
 
-## 16. Concepts I've learned (for the oral exam)
+## 16. Concepts I've learned 
 
 Contract-first design · separation of concerns · generate once, serve many · storage behind an interface · `async` for future network calls · IntersectionObserver + dwell time, false positives vs false negatives of the read rule · prompt as configuration + prompt versioning · prompt injection defence · JSON-only LLM output with validation · Open Graph (`og:image`) · hotlinking vs self-hosting, image licensing and attribution · third-party API risk (Pexels pause, Reddit shutdown) and fallbacks · API keys server-side only (`.env`, `.gitignore`) · authentication vs authorization (API Gateway + Lambda + Cognito, user ID from the verified token) · virtual environments and `requirements.txt` · `localhost` vs `file://` · Git: init/add/commit/push/pull, remotes, merging unrelated histories · caching to respect rate limits · idempotency.
 
