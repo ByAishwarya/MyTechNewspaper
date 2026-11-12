@@ -1,0 +1,31 @@
+{
+  "_comment": "Sources for scripts/collect.py. Edit this file to add or remove sources; no code change needed (configuration as data). official=true means the company itself published it.",
+  "max_age_hours": 48,
+  "official_feeds": [
+    { "name": "Nvidia Newsroom",          "company": "Nvidia",          "url": "https://nvidianews.nvidia.com/releases.xml" },
+    { "name": "OpenAI News",              "company": "OpenAI",          "url": "https://openai.com/news/rss.xml" },
+    { "name": "Microsoft Official Blog",  "company": "Microsoft",       "url": "https://blogs.microsoft.com/feed/" },
+    { "name": "Google The Keyword",       "company": "Alphabet/Google", "url": "https://blog.google/rss/" },
+    { "name": "AWS News Blog",            "company": "Amazon/AWS",      "url": "https://aws.amazon.com/blogs/aws/feed/" },
+    { "name": "Apple Newsroom",           "company": "Apple",           "url": "https://www.apple.com/newsroom/rss-feed.rss" },
+    { "name": "n8n Blog",                 "company": "n8n",             "url": "https://blog.n8n.io/rss/" }
+  ],
+  "google_news": {
+    "window": "2d",
+    "hl": "en-US",
+    "gl": "US",
+    "ceid": "US:en",
+    "queries": [
+      { "company": "Nvidia",          "query": "Nvidia" },
+      { "company": "Microsoft",       "query": "Microsoft" },
+      { "company": "Apple",           "query": "Apple iPhone OR Apple launches OR Apple AI" },
+      { "company": "Alphabet/Google", "query": "Google AI OR Google launches" },
+      { "company": "Amazon/AWS",      "query": "AWS OR Amazon AI" },
+      { "company": "Meta",            "query": "Meta AI OR Meta Platforms" },
+      { "company": "OpenAI",          "query": "OpenAI" },
+      { "company": "Anthropic",       "query": "Anthropic" },
+      { "company": "SAP",             "query": "SAP AI OR SAP launches" },
+      { "company": "n8n",             "query": "n8n" }
+    ]
+  }
+}
